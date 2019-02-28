@@ -2,17 +2,32 @@
 // 2 Пользователь вводит ответы пока не угадает, либо пока не истечет 10 ходов
 // 3. ПК проверяет введенные ответы
 
-//функция случайных чисел для ПК
+/*функция случайных чисел для ПК (цифры могут повторяться) */
 function getRandomInt() {
   return Math.floor(Math.random() * (9)) + 1;
 }
-var num = []; //сделать функцию для автоматического загадывания значений ПК
+/*var num = []; //сделать функцию для автоматического загадывания значений ПК
 for (let i = 0; i < 3; i++) {
     num[i] = getRandomInt();
     num.push(num[i]);
         
+} */
+
+/* функция случайных чисел для ПК БЕЗ ПОВТОРОВ */
+var num = [];
+var gen = function() {
+    while (num.length < 4) {
+    let numItem = getRandomInt();
+    if (num.indexOf(numItem) < 0) {
+        num.push(numItem);    
+    }       
+    } return num;
+
 }
+gen(); 
 console.log(num);
+
+
 
 var check = function (user) {
     let playerArray = [];
